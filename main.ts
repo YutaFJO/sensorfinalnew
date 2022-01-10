@@ -222,19 +222,19 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Mark, function (sprite, otherSpr
             }
         } else if (otherSprite == C) {
             if (pins.P0.analogRead() >= 0 && pins.P0.analogRead() < 200) {
-                Mater2.setImage(assets.image`Mater1-1`)
+                Mater3.setImage(assets.image`Mater1-1`)
                 RightC = 1
             } else if (pins.P0.analogRead() >= 200 && pins.P0.analogRead() < 400) {
-                Mater2.setImage(assets.image`Mater1-2`)
+                Mater3.setImage(assets.image`Mater1-2`)
                 RightC = 0
             } else if (pins.P0.analogRead() >= 400 && pins.P0.analogRead() < 600) {
                 Mater2.setImage(assets.image`Mater1-3`)
                 RightC = 0
             } else if (pins.P0.analogRead() >= 600 && pins.P0.analogRead() < 800) {
-                Mater2.setImage(assets.image`Mater1-4`)
+                Mater3.setImage(assets.image`Mater1-4`)
                 RightC = 0
             } else {
-                Mater2.setImage(assets.image`Mater1-5`)
+                Mater3.setImage(assets.image`Mater1-5`)
                 RightC = 0
             }
         } else if (otherSprite == HintPoint) {
@@ -361,7 +361,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Object, function (sprite, otherS
             }
         } else if (otherSprite == MovingButton2) {
             if (pins.P1.analogRead() > 1000) {
-                if (Button2Move == 1) {
+                if (Button2Move == 0) {
                     MovingButton2.setImage(assets.image`MButton2On`)
                     MovingButton2.setVelocity(10, 10)
                     pause(500)
@@ -754,7 +754,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 let Locater: Sprite = null
 let Goal: Sprite = null
 let Aisle: Sprite = null
-let Mater3: Sprite = null
 let Pool: Sprite = null
 let HintText2: Sprite = null
 let HintText1: Sprite = null
@@ -810,6 +809,7 @@ let Mark4F: Sprite = null
 let OpenA = 0
 let CardIconA: Sprite = null
 let RightC = 0
+let Mater3: Sprite = null
 let RightB = 0
 let Mater2: Sprite = null
 let RightA = 0
@@ -1224,6 +1224,7 @@ forever(function () {
     if (HintOpen == true) {
         Smog.setImage(assets.image`HintPanel`)
         Smog.setKind(SpriteKind.Info)
+        animation.stopAnimation(animation.AnimationTypes.All, Smog)
     }
 })
 forever(function () {
